@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ListOfEmployee {
-	// luu danh sach nhân viên
+	// luu danh sach nhÃ¢n viÃªn
 	private ArrayList<Staff> list = new ArrayList<>();
 
 	public void input() {
@@ -35,21 +35,21 @@ public class ListOfEmployee {
 				HrStaff hr = new HrStaff();
 				System.out.println("---------------------------------------");
 				System.out.println("HR department");
-				hr.inputStaff(sc);
+				hr.inputHrStaff(sc);
 				list.add(hr);
 				break;
 			case 2:
 				ProgrammingStaff pg = new ProgrammingStaff();
 				System.out.println("---------------------------------------");
 				System.out.println("Programming department");
-				pg.inputStaff(sc);
+				pg.inputProgrammingStaff(sc);
 				list.add(pg);
 				break;
 			case 3:
 				Accountant at = new Accountant();
 				System.out.println("---------------------------------------");
 				System.out.println("Accountant department");
-				at.inputStaff(sc);
+				at.inputAccountant(sc);
 				list.add(at);
 				break;
 
@@ -75,7 +75,7 @@ public class ListOfEmployee {
 			} else if (s instanceof ProgrammingStaff) {
 				((ProgrammingStaff) s).outputProgrammingStaff();
 			} else if (s instanceof Accountant) {
-				((Accountant) s).outputAccount();
+				((Accountant) s).outputAccountant();
 			}
 			System.out.println(
 					"\n -------------------------------------------------------------------------------------------------------------------------------------------");
@@ -120,7 +120,7 @@ public class ListOfEmployee {
 		String codeStaff = sc.nextLine();
 		Staff sFound = null;
 		for (Staff s : list) {
-			// equalsIgnoreCase tim kiem không phan biet hoc thuong
+			// equalsIgnoreCase tim kiem khÃ´ng phan biet hoc thuong
 			if (s.getCodeStaff().equalsIgnoreCase(codeStaff)) {
 
 				sFound = s;
