@@ -89,6 +89,8 @@ public class ListOfEmployee {
 		System.out.println("2. Delete ");
 		System.out.println("3. Edit ");
 		System.out.println("4. Display list");
+		System.out.println("5. Sort by salary basis");
+		
 		int n = sc.nextInt();
 
 		do {
@@ -105,6 +107,9 @@ public class ListOfEmployee {
 				break;
 			case 4:
 				output();
+				break;
+			case 5:
+				sortStaff();
 				break;
 			default:
 			}
@@ -138,7 +143,10 @@ public class ListOfEmployee {
 		}
 
 	}
-
+  	public void sortStaff() {
+    		Collections.sort(list, (a,b)-> (int) (a.getSalary() - b.getSalary()));
+    		output();
+    	}
 	public void deleteStaff() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the code to delete:");
