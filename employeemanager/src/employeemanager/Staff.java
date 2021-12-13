@@ -12,6 +12,7 @@ public Staff(String codeStaff, String name, String typeOfEmployee, double salary
 	this.typeOfEmployee = typeOfEmployee;
 	this.salary = salary;
 }
+	
 public String getCodeStaff() {
 	return codeStaff;
 }
