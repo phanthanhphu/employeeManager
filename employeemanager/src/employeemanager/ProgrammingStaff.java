@@ -18,6 +18,7 @@ public class ProgrammingStaff extends Staff {
 		
 		this.yearOfExperience = yearOfExperience;
 		
+		
 	}
 
 	public void inputProgrammingStaff(Scanner sc) {
