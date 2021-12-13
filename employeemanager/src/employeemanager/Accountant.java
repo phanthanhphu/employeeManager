@@ -36,5 +36,5 @@ public class Accountant extends Staff {
 		System.out.printf("\n");
 	}
 	
-  
+	
 }
