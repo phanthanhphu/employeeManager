@@ -1,12 +1,13 @@
 package employeemanager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ListOfEmployee {
-	// luu danh sach nhÃ¢n viÃªn
+	// luu danh sach nhân viên
 	private ArrayList<Staff> list = new ArrayList<>();
-
+    
 	public void input() {
 		Scanner sc = new Scanner(System.in);
 		// clean het noi dung trong danh sach
@@ -19,17 +20,16 @@ public class ListOfEmployee {
 			System.out.println("1. Hrstaff ");
 			System.out.println("2. Programming staff ");
 			System.out.println("3. Accountant ");
-			String type  = sc.nextLine();
-			
+			String type = sc.nextLine();
+
 			// ep kieu
-            int n = Integer.parseInt(type);
-          
-            	if(n<1 || n>4) {
-        			sc.nextLine();
-        			}
-            	else if(n == 4) {
-            		break;
-            	}
+			int n = Integer.parseInt(type);
+
+			if (n < 1 || n > 4) {
+				sc.nextLine();
+			} else if (n == 4) {
+				break;
+			}
 			switch (n) {
 			case 1:
 				HrStaff hr = new HrStaff();
@@ -56,10 +56,6 @@ public class ListOfEmployee {
 			}
 
 		} while (true);
-
-	}
-
-	public void tyleOfEmployee() {
 
 	}
 
@@ -90,7 +86,7 @@ public class ListOfEmployee {
 		System.out.println("3. Edit ");
 		System.out.println("4. Display list");
 		System.out.println("5. Sort by salary basis");
-		
+		System.out.println("6. Staff department");
 		int n = sc.nextInt();
 
 		do {
@@ -111,6 +107,9 @@ public class ListOfEmployee {
 			case 5:
 				sortStaff();
 				break;
+			case 6:
+				searchStaffDepartmant();
+				break;
 			default:
 			}
 			function();
@@ -118,15 +117,53 @@ public class ListOfEmployee {
 		} while (n > 4 || n < 1);
 
 	}
-
+	public void searchStaffDepartmant() {
+		
+		System.out.println("Select the staff department");
+		System.out.println("---------------------------------------");
+		System.out.println("1. Hrstaff ");
+		System.out.println("2. Programming staff ");
+		System.out.println("3. Accountant ");
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		if(n == 1) {
+			for (Staff s : list) {
+				if (s instanceof HrStaff) {
+					((HrStaff) s).outputHr();
+				}
+			}
+		}else if(n == 2) {
+			for (Staff s : list) {
+				if (s instanceof ProgrammingStaff) {
+					((ProgrammingStaff) s).outputProgrammingStaff();
+				} 
+			}
+		}else if(n == 3) {
+			for (Staff s : list) {
+				if (s instanceof Accountant) {
+					((Accountant) s).outputAccountant();
+			}
+		}
+		}else {
+			System.out.print("Staff department not found");
+		}
+	}
+	
+    public void sortStaff() {
+    	Collections.sort(list, (a,b)-> (int) (a.getSalary() - b.getSalary()));
+    	output();
+    }
 	public void searchStaff() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the employee code you are looking for : ");
-		String codeStaff = sc.nextLine();
+		String code = sc.nextLine();
 		Staff sFound = null;
+		
+		
+	
 		for (Staff s : list) {
-			// equalsIgnoreCase tim kiem khÃ´ng phan biet hoc thuong
-			if (s.getCodeStaff().equalsIgnoreCase(codeStaff)) {
+			
+			if (s.getCodeStaff().equalsIgnoreCase(code)) {
 
 				sFound = s;
 				break;
@@ -138,20 +175,21 @@ public class ListOfEmployee {
 			System.out.print("Employee information found:");
 			sFound.outputStaff();
 		} else {
-			System.out.print("Employee information not found:" + codeStaff);
+			System.out.print("Employee information not found:" + code);
 			System.out.printf("\n");
 		}
 
 	}
-  	public void sortStaff() {
-    		Collections.sort(list, (a,b)-> (int) (a.getSalary() - b.getSalary()));
-    		output();
-    	}
+
 	public void deleteStaff() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the code to delete:");
 		String code = sc.nextLine();
 		Staff sFound = null;
+		for (Staff s : list) {
+			
+			System.out.print(s.getTypeOfEmployee());
+		}
 		for (Staff s : list) {
 			if (s.getCodeStaff().equalsIgnoreCase(code)) {
 				sFound = s;

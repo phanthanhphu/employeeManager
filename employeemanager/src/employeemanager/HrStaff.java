@@ -31,5 +31,4 @@ public class HrStaff extends Staff {
 		System.out.printf("salary bouns: %f        total salary: %f",salaryBouns, sumsalary);
 	}
 
-	
 }

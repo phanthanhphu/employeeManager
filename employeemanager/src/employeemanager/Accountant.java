@@ -29,12 +29,12 @@ public class Accountant extends Staff {
 		setTypeOfEmployee("Accountant");
 		sc.nextLine();
 	}
-	public void outputAccount() {
+	public void outputAccountant() {
 		super.outputStaff();
 		double tatolsalary = getSalary() + responsileWage;
 		System.out.printf("responsile wage:%f     total sarary:%f",responsileWage,tatolsalary);
 		System.out.printf("\n");
 	}
 	
-	
+  
 }
